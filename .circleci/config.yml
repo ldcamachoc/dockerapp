@@ -10,8 +10,10 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            apk add --no-cache py-pip=9.0.0-r1
-            pip install docker-compose==1.15.0
+            apk add --no-cache \
+              py-pip=9.0.0-r1
+            pip install \
+              docker-compose==1.15.0
       - run:
           name: Run tests
           command: |
@@ -24,4 +26,4 @@ jobs:
             docker tag dockerapp_dockerapp $DOCKER_HUB_USER_ID/dockerapp:$CIRCLE_SHA1
             docker tag dockerapp_dockerapp $DOCKER_HUB_USER_ID/dockerapp:latest
             docker push $DOCKER_HUB_USER_ID/dockerapp:$CIRCLE_SHA1
-            docker push $DOCKER_HUB_USER_ID/dockerapp:$latest
+            docker push $DOCKER_HUB_USER_ID/dockerapp:latest
